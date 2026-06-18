@@ -7,24 +7,17 @@ import json
 import os
 import re
 
-# ==================================================
 # CONFIGURATION
-# 
-
 BOOKS_URL = "https://books.toscrape.com/"
 BASE_CURRENCY = "GBP"
 
-# ==================================================
 # GET TARGET CURRENCY FROM USER
-# ==================================================
-
 target_currency = input(
     "Enter target currency (USD, EUR, KES, CAD, etc.): "
 ).upper()
 
-# ==================================================
 # GET EXCHANGE RATE
-# ==================================================
+
 
 def get_exchange_rate(base_currency, target_currency):
     """
@@ -58,9 +51,8 @@ def get_exchange_rate(base_currency, target_currency):
         return None
 
 
-# ==================================================
+
 # SCRAPE BOOK DATA
-# ==================================================
 
 def scrape_books(number_of_books=10):
     """
@@ -108,11 +100,7 @@ def scrape_books(number_of_books=10):
         print(f"\nScraping error:\n{e}")
         return []
 
-
-# ==================================================
 # CONVERT PRICES
-# ==================================================
-
 def convert_prices(data, exchange_rate, target_currency):
     """
     Convert prices to target currency
@@ -131,11 +119,7 @@ def convert_prices(data, exchange_rate, target_currency):
 
     return data
 
-
-# ==================================================
 # SAVE FILES
-# ==================================================
-
 def save_files(data):
     """
     Save CSV and JSON
@@ -159,11 +143,7 @@ def save_files(data):
 
     return csv_file, json_file, df
 
-
-# ==================================================
 # DISPLAY TABLE
-# ==================================================
-
 def display_table(df):
 
     print("\n")
@@ -175,10 +155,7 @@ def display_table(df):
 
     print("=" * 80)
 
-
-# ==================================================
 # PLOT CHART
-# ==================================================
 
 def plot_chart(df, target_currency):
 
@@ -223,11 +200,7 @@ def plot_chart(df, target_currency):
     except Exception as e:
         print(f"\nChart error:\n{e}")
 
-
-# ==================================================
 # MAIN PROGRAM
-# ==================================================
-
 def main():
 
     print("\nScraping books...\n")
@@ -278,10 +251,7 @@ def main():
 
     plot_chart(df, target_currency)
 
-
-# ==================================================
 # RUN APPLICATION
-# ==================================================
 
 if __name__ == "__main__":
     main()
